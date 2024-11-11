@@ -1,0 +1,18 @@
+body {
+    background-color: gray;
+}
+
+#gamefield {
+    background-color: lightgray;
+    width: 640px;
+    height: 320px;
+    outline: 4px solid green;
+}
+
+#player {
+    width: 32px;
+    height: 40px;
+    background-image: url("./assets/Character\ 1.png");
+    outline: 1px solid red;
+    background-size: 400% 400%;
+}
