@@ -6,6 +6,8 @@ const player = {
     x: 100,
     y: 100,
     speed: 200, // px/s
+    height: 40,
+    width: 32,
 };
 
 const controls = {
@@ -31,18 +33,38 @@ function displayPlayer() {
 }
 
 function movePlayer(deltaTime) {
+    const newPos = {
+        x: player.x,
+        y: player.y,
+    };
+
     if (controls.up) {
-        player.y -= player.speed * deltaTime;
+        newPos.y -= player.speed * deltaTime;
     }
     if (controls.down) {
-        player.y += player.speed * deltaTime;
+        newPos.y += player.speed * deltaTime;
     }
     if (controls.left) {
-        player.x -= player.speed * deltaTime;
+        newPos.x -= player.speed * deltaTime;
     }
     if (controls.right) {
-        player.x += player.speed * deltaTime;
+        newPos.x += player.speed * deltaTime;
     }
+
+    if (canMove(player, newPos)) {
+        player.y = newPos.y;
+        player.x = newPos.x;
+    }
+}
+
+function canMove(player, position) {
+    if (position.y > 320 - player.height || position.y < 0) {
+        return false;
+    }
+    if (position.x > 640 - player.width || position.x < 0) {
+        return false;
+    }
+    return true;
 }
 
 function keyPressed(event) {
