@@ -3,6 +3,7 @@ body {
 }
 
 #gamefield {
+    position: relative;
     background-color: lightgray;
     width: 640px;
     height: 320px;
@@ -10,9 +11,19 @@ body {
 }
 
 #player {
+    position: absolute;
     width: 32px;
     height: 40px;
     background-image: url("./assets/Character\ 1.png");
+    outline: 1px solid red;
+    background-size: 400% 400%;
+}
+
+#enemy {
+    position: absolute;
+    width: 32px;
+    height: 40px;
+    background-image: url("./assets/Character\ 11.png");
     outline: 1px solid red;
     background-size: 400% 400%;
 }
