@@ -27,3 +27,18 @@ body {
     outline: 1px solid red;
     background-size: 400% 400%;
 }
+
+.flash {
+    animation: flashWhite .2s infinite;
+}
+
+@keyframes flashWhite {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(10);
+    }
+}
+
+

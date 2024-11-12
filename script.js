@@ -149,6 +149,12 @@ function tick(time) {
 function displayPlayer() {
     const playerPos = document.querySelector("#player");
 
+    if (player.collision) {
+        playerPos.classList.add("flash");
+    } else {
+        playerPos.classList.remove("flash");
+    }
+
     playerPos.style.translate = `${player.x}px ${player.y}px`;
 }
 
