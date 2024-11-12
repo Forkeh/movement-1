@@ -23,9 +23,10 @@ const controls = {
 const enemy = {
     x: 200,
     y: 100,
-    speed: 0, // px/s
+    speed: 100, // px/s
     width: 32,
     height: 40,
+    direction: "right",
 };
 
 function movePlayer(deltaTime) {
@@ -50,6 +51,30 @@ function movePlayer(deltaTime) {
     if (canMove(player, newPos)) {
         player.y = newPos.y;
         player.x = newPos.x;
+    }
+}
+
+function moveEnemy(deltaTime) {
+    const newPos = {
+        x: enemy.x,
+        y: enemy.y,
+    };
+
+    if (enemy.direction === "right") {
+        newPos.x += enemy.speed * deltaTime;
+        if (newPos.x >= 400) {
+            enemy.direction = "left";
+        }
+    } else if (enemy.direction === "left") {
+        newPos.x -= enemy.speed * deltaTime;
+        if (newPos.x <= 200) {
+            enemy.direction = "right";
+        }
+    }
+
+    if (canMove(enemy, newPos)) {
+        enemy.y = newPos.y;
+        enemy.x = newPos.x;
     }
 }
 
@@ -124,6 +149,7 @@ function tick(time) {
 
     // move
     movePlayer(deltaTime);
+    moveEnemy(deltaTime);
 
     // Check for collision with enemy
     console.log("COLLISON:", isColliding(player, enemy));
